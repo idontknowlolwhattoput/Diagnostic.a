@@ -6,6 +6,7 @@ export default function Navigation() {
 
     // DROP DOWN
     const [isDropDown, setDropDown] = useState(false);
+  
 
     // NAV SELECTION
     const [selected, setSelected] = useState("")
@@ -19,7 +20,7 @@ export default function Navigation() {
         },
         {
           name: "Services", 
-          img: "True"
+          img: "True",
         },
 
     ]
@@ -28,13 +29,16 @@ export default function Navigation() {
        
     },[])
     
-    
+    // GET THE SELECTED OPTION IN NAVSELECTION
     const handleDropDown = (selection) => {
-         setSelected(selection);
-         if (selection === "Services") {
-       setDropDown(prev => !prev);
-      }
-    };
+        setSelected(selection);
+        if (selection === "Services") 
+          // SET THE DROP DOWN TO SHOW
+           setDropDown(prev => !prev);
+    }
+
+     
+     
 
     return (
         <div className="inter flex flex-row items-center justify-between shadow  w-full h-24 px-4 cursor-pointer">
@@ -45,16 +49,23 @@ export default function Navigation() {
 
            <div className="">
              <ul className="hidden md:flex ">
+
                 {NavSelection.map((nav, key) => (
-                   <li className="md:text-2xl px-7 font-light transition flex flex-row items-center" key={key} >
-                      <div className="flex flex-row gap-2" onClick={() => {handleDropDown(nav.name)}}>
+                   <li className="md:text-2xl px-7 font-light  transition flex flex-row items-center" key={key} >
+                      <div className="relative flex flex-row gap-4 " onClick={() => {handleDropDown(nav.name)}} >
                          {nav.name}
                          {nav.img && <FaSortDown className="w-7 h-7 " />}
+                         {isDropDown && nav.name == selected &&  (
+                           <div className="w-49 h-50 absolute bg-white top-full -left-7 rounded shadow-md z-90" id="dropdown"> 
+                             <p>Option 1</p>
+                             <p>Option 2</p>
+                             <p>Option 3</p>
+                           </div>
+                         )}
                       </div>
                    </li>
                 ))}
              </ul>
-               {isDropDown && (<div className="bg-red-500 w-5 h-5 absolute l-" ></div>)}
            </div>
 
            <div className="">
