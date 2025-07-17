@@ -2,10 +2,13 @@ import logo from '../assets/logo.svg'
 import { useState, useEffect } from 'react';
 import { FaSortDown, FaSortUp  } from "react-icons/fa";
 import '../components/navbar.css'
+import arrow from '../assets/arrow.svg'
 export default function Navigation() {
+
 
     // DROP DOWN
     const [isDropDown, setDropDown] = useState(false);
+    const [isDisabled, setDisable] = useState(false);
   
 
     // NAV SELECTION
@@ -22,7 +25,18 @@ export default function Navigation() {
           name: "Services", 
           img: "True",
         },
+    ]
 
+     const dropDownSelection = [
+        {
+          name: "Option 1"
+        },
+        {
+          name: "Option 2"
+        },
+        {
+          name: "Option 3", 
+        },
     ]
 
     useEffect(() => {
@@ -40,26 +54,24 @@ export default function Navigation() {
      
      
 
-    return (
-        <div className="inter flex flex-row items-center justify-between shadow  w-full h-24 px-4 cursor-pointer">
+    return ( 
+        <header className="inter flex flex-row items-center justify-between shadow  w-full h-24 px-2.5 cursor-pointer md:px-5">
            <div className="">
             {/** <img src={logo} className="w-24 h-16"/> */} 
              <h1 className="inter text-3xl font-bold">Diagnostic.a</h1>
            </div>
-
            <div className="">
              <ul className="hidden md:flex ">
-
                 {NavSelection.map((nav, key) => (
-                   <li className="md:text-2xl px-7 font-light  transition flex flex-row items-center" key={key} >
-                      <div className="relative flex flex-row gap-4 " onClick={() => {handleDropDown(nav.name)}} >
-                         {nav.name}
-                         {nav.img && <FaSortDown className="w-7 h-7 " />}
-                         {isDropDown && nav.name == selected &&  (
-                           <div className="w-49 h-50 absolute bg-white top-full -left-7 rounded shadow-md z-90" id="dropdown"> 
-                             <p>Option 1</p>
-                             <p>Option 2</p>
-                             <p>Option 3</p>
+                   <li className="md:text-2xl px-8 font-light transition flex flex-row items-center text-shadow-lg hover:text-white" key={key} >
+                      <div className="relative flex flex-row" onClick={() => {handleDropDown(nav.name)}} >
+                         {nav.name} 
+                         {nav.img && <FaSortDown className="w-6 h-6 " />}
+                         {isDropDown && nav.name != 'Home' && nav.name != "About"  &&  (
+                           <div className="flex flex-col justify-evenly items-center w-25 h-40 absolute bg-white top-full rounded shadow-md z-90 hover:text-black text-lg" id="dropdown"> 
+                             {dropDownSelection.map((ddown, key) => (
+                                <div className="transition" id="dropDown" key={key}>{ddown.name}</div>
+                             ))}
                            </div>
                          )}
                       </div>
@@ -67,12 +79,13 @@ export default function Navigation() {
                 ))}
              </ul>
            </div>
-
+           
            <div className="">
-            <button className="w-40 h-13 bg-black rounded-4xl text-white font-bold ">
+            <button className="flex flex-row justify-center gap-3 items-center w-40 h-13 bg-black rounded-4xl text-white font-bold transition" id="startedButton">
                 Get Started!    
+                <img src={arrow} className="w-7 h-7"></img>
             </button>
            </div>
-        </div>
+        </header>
     )
 }
