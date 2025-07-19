@@ -55,7 +55,7 @@ export default function Navigation() {
      
 
     return ( 
-        <header className="inter flex flex-row items-center justify-between shadow  w-full h-24 px-2.5 cursor-pointer md:px-5">
+        <header className="inter flex flex-row items-center justify-between w-full h-24 px-2.5 cursor-pointer md:px-5 select-none border-b border-gray-100 shadow-sm">
            <div className="">
             {/** <img src={logo} className="w-24 h-16"/> */} 
              <h1 className="inter text-3xl font-bold">Diagnostic.a</h1>
@@ -81,7 +81,7 @@ export default function Navigation() {
            </div>
            
            <div className="">
-            <button className="flex flex-row justify-center gap-3 items-center w-40 h-13 bg-black rounded-4xl text-white font-bold transition" id="startedButton">
+            <button className="flex flex-row justify-center gap-3 items-center w-40 h-13 bg-black rounded-4xl text-white  transition" id="startedButton">
                 Get Started!    
                 <img src={arrow} className="w-7 h-7"></img>
             </button>
