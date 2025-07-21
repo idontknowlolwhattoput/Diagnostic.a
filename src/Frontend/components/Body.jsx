@@ -1,7 +1,7 @@
-import '../components/navbar.css'
-import Doctor from "../assets/doctorandpatient.jpg"
-import Computer from "../assets/supercomputer.jpg"
-import Arrow from "../assets/arrow.svg"
+import './navbar.css'
+import Doctor from "../../assets/doctorandpatient.jpg"
+import Computer from "../../assets/supercomputer.jpg"
+import Arrow from "../../assets/arrow.svg"
 export default function Body() {
     return (
        <main className="flex flex-col items-center select-none">

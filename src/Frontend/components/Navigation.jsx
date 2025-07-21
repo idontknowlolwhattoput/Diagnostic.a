@@ -1,19 +1,18 @@
-import logo from '../assets/logo.svg'
 import { useState, useEffect } from 'react';
 import { FaSortDown, FaSortUp  } from "react-icons/fa";
-import '../components/navbar.css'
-import arrow from '../assets/arrow.svg'
+import './navbar.css'
+
+import arrow from '../../assets/arrow.svg'
+
+import { useNavigate } from 'react-router-dom';
+
 export default function Navigation() {
-
-
+    const navigate = useNavigate()
     // DROP DOWN
     const [isDropDown, setDropDown] = useState(false);
     const [isDisabled, setDisable] = useState(false);
-  
-
     // NAV SELECTION
     const [selected, setSelected] = useState("")
- 
     const NavSelection = [
         {
           name: "Home"
@@ -26,7 +25,6 @@ export default function Navigation() {
           img: "True",
         },
     ]
-
      const dropDownSelection = [
         {
           name: "Option 1"
@@ -80,12 +78,10 @@ export default function Navigation() {
              </ul>
            </div>
            
-           <div className="">
-            <button className="flex flex-row justify-center gap-3 items-center w-40 h-13 bg-black rounded-4xl text-white  transition" id="startedButton">
-                Get Started!    
-                <img src={arrow} className="w-7 h-7"></img>
-            </button>
-           </div>
+           <button className="flex flex-row justify-center gap-3 items-center w-40 h-13 bg-black rounded-4xl text-white  transition" id="startedButton" onClick={() => {navigate("/login")}}>
+             Get Started!    
+             <img src={arrow} className="w-7 h-7"></img>
+           </button>
         </header>
     )
 }
