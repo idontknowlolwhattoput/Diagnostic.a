@@ -19,10 +19,13 @@ export default function Login() {
            <p className="text-lg ">Login with your user credentials or create new one below</p>
              <form className="flex flex-col gap-1 w-64 ">
                  <legend className="font-semibold text-md text-gray-800">Username</legend>
-                 <input type="email" className="border-2 px-1 rounded-md h-12 w-70 text-lg transition md:w-100" id="emailbox"></input>
+                 <input type="email" className="font-medium border-2 px-1 rounded-md h-12 w-70 text-lg md:w-102 lg:w-108" id="emailbox"
+                  onChange={(e) => {setCredentials({...credentials, username: e.target.value})}}
+                 ></input>
                  <legend className="font-semibold text-md text-gray-800">Password</legend>
-                 <input type="password" className="border-2 rounded-md h-12 w-70 text-lg md:w-100 " id="passbox"></input>
-                 
+                 <input type="password" className="font-medium border-2 px-1 rounded-md h-12 w-70 text-lg md:w-102 lg:w-108" id="passbox"
+                  onChange={(e) => {setCredentials({...credentials, password: e.target.value})}}
+                 ></input>
              </form>
              <div className="flex flex-row gap-1 m-2">
                <p>Forgot password?</p>
@@ -34,7 +37,7 @@ export default function Login() {
                  <p>Don't have an account?</p>
                  <p className="text-gray-600">Sign up</p>
                </div>
-             </div>
+             </div> 
          </div>
        </main>
     )
